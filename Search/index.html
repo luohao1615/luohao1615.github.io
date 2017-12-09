@@ -6,16 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="WEB前端开发（CSS88.COM）是一个致力于推广国内前端行业的技术博客。它以探索为己任，不断活跃在行业技术最前沿，努力提供高质量前端技术博文。自创建以来吸引了众多Web前端开发工程师的加盟，交流。 内容涵盖Web前端开发原创教程、技术中文文档、前端工具、资源分享、疑难解答、最新技术、招聘信息等，旨在为Web前端开发工程师及爱好者提供一个技术交流、经验分享的网站，不断追求更完善的用户体验！ 我们">
-<meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="http://yoursite.com/about/index.html">
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Search">
+<meta property="og:url" content="http://yoursite.com/Search/index.html">
 <meta property="og:site_name" content="luohao">
-<meta property="og:description" content="WEB前端开发（CSS88.COM）是一个致力于推广国内前端行业的技术博客。它以探索为己任，不断活跃在行业技术最前沿，努力提供高质量前端技术博文。自创建以来吸引了众多Web前端开发工程师的加盟，交流。 内容涵盖Web前端开发原创教程、技术中文文档、前端工具、资源分享、疑难解答、最新技术、招聘信息等，旨在为Web前端开发工程师及爱好者提供一个技术交流、经验分享的网站，不断追求更完善的用户体验！ 我们">
-<meta property="og:updated_time" content="2017-12-09T11:45:12.747Z">
+<meta property="og:updated_time" content="2017-12-09T13:40:15.444Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="about">
-<meta name="twitter:description" content="WEB前端开发（CSS88.COM）是一个致力于推广国内前端行业的技术博客。它以探索为己任，不断活跃在行业技术最前沿，努力提供高质量前端技术博文。自创建以来吸引了众多Web前端开发工程师的加盟，交流。 内容涵盖Web前端开发原创教程、技术中文文档、前端工具、资源分享、疑难解答、最新技术、招聘信息等，旨在为Web前端开发工程师及爱好者提供一个技术交流、经验分享的网站，不断追求更完善的用户体验！ 我们">
+<meta name="twitter:title" content="Search">
     
     
         
@@ -35,7 +32,7 @@
         
     
     <!-- title -->
-    <title>about</title>
+    <title>Search</title>
     <!-- styles -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- rss -->
@@ -81,15 +78,19 @@
         
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
   
+    <section id="search">
+  <form>
+    <input type="text" class="search-input" id="search-input" placeholder="search...">
+  </form>
+  <div id="search-result"></div>
+  <p class="search-no-result">No results found</p>
+</section>
+
+  
   
 
   <div class="content" itemprop="articleBody">
-    <p>WEB前端开发（CSS88.COM）是一个致力于推广国内前端行业的技术博客。它以探索为己任，不断活跃在行业技术最前沿，努力提供高质量前端技术博文。自创建以来吸引了众多Web前端开发工程师的加盟，交流。</p>
-<p>内容涵盖Web前端开发原创教程、技术中文文档、前端工具、资源分享、疑难解答、最新技术、招聘信息等，旨在为Web前端开发工程师及爱好者提供一个技术交流、经验分享的网站，不断追求更完善的用户体验！</p>
-<p>我们的标语：<br>和设计师一样细腻,和程序员一样严谨;游走在设计师和工程师之间,游刃于用户体验和技术实现之间,斡旋在用户利益和商业利益之间。——偶是一枚前端开发工程师！</p>
-<p>关注我：新浪微博</p>
-<p>联系方式：<br>网名：愚人码头<br>QQ：148246293；点击这里给我发消息<br>email：admin@css88.com；</p>
-
+    
   </div>
 </article>
 
@@ -130,6 +131,35 @@
 <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
 <script src="/js/main.js"></script>
 <!-- search -->
+
+  <script src="/js/search.js"></script>
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input");
+    var $resultArea = $("#search-result");
+
+    inputArea.onfocus = function() {
+      var search_path = "search.xml";
+      if (search_path.length == 0) {
+        search_path = "search.xml";
+      }
+      var path = "/" + search_path;
+      searchFunc(path, 'search-input', 'search-result');
+    }
+
+    inputArea.onkeydown = function(){
+        if(event.keyCode==13){
+            return false
+        }
+    }
+
+    $resultArea.bind("DOMNodeRemoved DOMNodeInserted", function(e) {
+        if (!$(e.target).text()) {
+            $(".search-no-result").show(200);
+        } else {
+            $(".search-no-result").hide();
+        }
+    })
+  </script>
 
 <!-- Google Analytics -->
 
